@@ -2,14 +2,13 @@ package com.juaracoding;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class LoginTest {
+public class CartTest {
 
     WebDriver driver;
 
@@ -29,16 +28,24 @@ public class LoginTest {
         driver.quit();
     }
 
+    // buatkan skenario test add product
     @Test
-    public void testLoginValid(){
+    public void testAddToCart(){
+        // -- Login --
         driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_user");
         driver.findElement(By.xpath("//input[@id='password']")).sendKeys("secret_sauce");
         driver.findElement(By.xpath("//input[@id='login-button']")).click();
-        String txtLogo = driver.findElement(By.xpath("//div[@class='app_logo']")).getText();
-        String currentUrl = driver.getCurrentUrl();
-        Assert.assertEquals(txtLogo, "Swag Labs");
-        Assert.assertEquals(currentUrl, "https://www.saucedemo.com/inventory.html");
+        // -- Login --
+        driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']")).click();
+        String txtCartBadge = driver.findElement(By.xpath("//span[@class='shopping_cart_badge']")).getText();
+        String txtRemove = driver.findElement(By.xpath("//button[@id='remove-sauce-labs-backpack']")).getText();
+        driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
+        String txtInventoryItemName = driver.findElement(By.xpath("//div[@class='inventory_item_name']")).getText();
+        Assert.assertEquals(txtCartBadge, "1");
+        Assert.assertEquals(txtRemove, "Remove");
+        Assert.assertEquals(txtInventoryItemName, "Sauce Labs Backpack");
     }
+
 
 
     public static void delay(long detik){

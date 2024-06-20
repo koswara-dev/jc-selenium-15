@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="D:/workspace/juaracoding/sqabatch15/JCSelenium/src/test/java/com/juaracoding/LoginTest.java">
+        <classes>
+            <class name="com.juaracoding.LoginTest">
+                <methods>
+                    <include name="testLoginValid"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="D:/workspace/juaracoding/sqabatch15/JCSelenium/src/test/java/com/juaracoding/CartTest.java">
+        <classes>
+            <class name="com.juaracoding.CartTest">
+                <methods>
+                    <include name="testAddToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
